@@ -3,7 +3,7 @@
 class Game
 {
 private:
-	Level levels[3];
+	Level *levels;
 	int currentLevel;
 public:
 	Game();

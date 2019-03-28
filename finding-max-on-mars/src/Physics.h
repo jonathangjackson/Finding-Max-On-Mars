@@ -1,4 +1,6 @@
 #pragma once
+#include "Position.h"
+#include "Level.h"
 
 class Physics
 {
@@ -9,8 +11,8 @@ private:
 public:
 	Physics();
 	~Physics();
-	//bool checkCollision(Position, int)
-	//Position jump(Position, float)
-	//void setGravity(Level)
+	bool checkCollision(Position, int);
+	Position jump(Position, float);
+	void setGravity(Level);
 };
 

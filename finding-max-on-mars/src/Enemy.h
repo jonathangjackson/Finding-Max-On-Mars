@@ -1,11 +1,14 @@
 #pragma once
+#include "Position.h"
+#include "ofImage.h"
+
 class Enemy
 {
 private:
-	//position
+	Position p;
 	int damage;
 	int health;
-	//ofImage sprites[]
+	ofImage *sprites;
 	bool animate;
 	float jumpTime;
 public:
@@ -14,6 +17,6 @@ public:
 	int getDamage();
 	int getHealth();
 	void setHealth(int i);
-	//ofImg animateSprite(int i);
+	ofImage animateSprite(int i);
 };
 
