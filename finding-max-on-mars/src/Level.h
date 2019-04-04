@@ -1,6 +1,5 @@
-#pragma oncec
-#include "ofImage.h"
-using namespace std;
+#pragma once
+#include "Player.h"
 
 class Level
 {
@@ -12,7 +11,7 @@ private:
 	float gravity;
 	string name;
 public:
-	Level(string, ofImage, ofImage, string*, int, float);//name, heightMap, bgImage, enemyTypes, numOfEnemies, gravity
+	Level(string, ofImage, ofImage, string[], int, float);//name, heightMap, bgImage, enemyTypes, numOfEnemies, gravity
 	Level();
 	~Level();
 	ofImage getHeightMap();

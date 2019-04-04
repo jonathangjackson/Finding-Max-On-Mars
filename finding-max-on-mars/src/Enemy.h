@@ -1,6 +1,5 @@
 #pragma once
-#include "Position.h"
-#include "ofImage.h"
+#include "Physics.h"
 
 class Enemy
 {
@@ -12,11 +11,12 @@ private:
 	bool animate;
 	float jumpTime;
 public:
-	Enemy();
+	Enemy(Position, ofImage[], int);
 	~Enemy();
 	int getDamage();
 	int getHealth();
-	void setHealth(int i);
-	ofImage animateSprite(int i);
+	void setHealth(int);
+	void animateSprite(int);
+	Position getPos();
 };
 
