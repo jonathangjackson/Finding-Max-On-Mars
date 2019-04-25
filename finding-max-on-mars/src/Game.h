@@ -1,6 +1,6 @@
 #pragma once
-#include "Level.h"
 #include "Render.h"
+#include "Player.h"
 
 class Game
 {
@@ -9,11 +9,13 @@ private:
 	int currentLevel;
 	Physics phys;
 	Render ren;
+	Player *max = nullptr;
 public:
 	Game();
 	~Game();
 	void init(int);
 	void update();
 	void onKeyDown(int);
+	void draw();
 };
 

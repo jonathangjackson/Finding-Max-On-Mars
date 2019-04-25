@@ -17,6 +17,6 @@ public:
 	int getHealth();
 	void setHealth(int);
 	void animateSprite(int);
-	Position getPos();
+	Position &getPos();
 };
 

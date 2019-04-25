@@ -9,6 +9,7 @@ private:
 	int score;
 	int lives;
 public:
+	Player(Position p, ofImage s[], int size) : Enemy(p, s, size) { score = 0; lives = 3; }
 	int getLives();
 	int getScore();
 	void setScore(int);

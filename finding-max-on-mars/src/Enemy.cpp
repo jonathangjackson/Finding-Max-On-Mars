@@ -13,8 +13,8 @@ Enemy::Enemy(Position p, ofImage s[], int size)
 
 Enemy::~Enemy()
 {
-	delete[] this->sprites;
-	this->sprites = NULL;
+	//delete[] this->sprites;
+	//this->sprites = NULL;
 }
 
 int Enemy::getDamage() {
@@ -39,6 +39,6 @@ void Enemy::animateSprite(int i) {
 	this->sprites[i].draw(this->p.getX(), this->p.getY());
 }
 
-Position Enemy::getPos() {
-	return this->p;
+Position &Enemy::getPos() {
+	return p;
 }

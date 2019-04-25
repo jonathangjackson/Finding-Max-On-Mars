@@ -22,8 +22,8 @@ Level::Level() {
 
 Level::~Level()
 {
-	delete[] enemyTypes;
-	enemyTypes = NULL;
+	//delete[] enemyTypes;
+	//enemyTypes = NULL;
 }
 
 

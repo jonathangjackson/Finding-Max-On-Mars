@@ -1,5 +1,6 @@
 #include "Position.h"
-
+#include <iostream>
+using namespace std;
 
 
 Position::Position()
@@ -17,6 +18,10 @@ Position::~Position()
 void Position::setPostion(float a, float b) {
 	this->x += a;
 	this->y += b;
+	if (!inFrame()) {
+		this->x -= a;
+		this->y -= b;
+	}
 }
 
 float Position::getX() {
@@ -27,7 +32,7 @@ float Position::getY() {
 }
 
 bool Position::inFrame() {
-	if (this->x < 0 || this->x > 1024) {
+	if (this->x < 0 || this->x > 1024 - 90) {
 		return false;
 	}
 	if (this->y < 0 || this->y > 768) {

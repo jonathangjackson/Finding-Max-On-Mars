@@ -2,6 +2,17 @@
 
 Game::Game()
 {
+	ofImage *playerImg;
+	playerImg = new ofImage[1];
+	playerImg[0].load("max.png");
+	
+	Position start;
+	start.setPostion(0, 500);
+
+	max = new Player(Position(start), playerImg, 1);
+	max->getPos().setPostion(10.0f, 0.0f);
+	cout << max->getPos().getX() << endl;
+
 	levels = new Level[3];
 	ofImage backgrounds[3];
 	ofImage heightMaps[3];
@@ -24,19 +35,54 @@ Game::Game()
 
 Game::~Game()
 {
-	delete[] levels;
-	levels = NULL;
+	//delete[] levels;
+	//levels = NULL;
 }
 
 void Game::init(int i) {
 	//Pass level to render and physics
-	
+	ren.loadLevel(levels[i]);
+	phys.init(0.5, levels[i].getHeightMap());
 }
 
 void Game::update() {
-
+	if (phys.isJumpCheck()) {
+		if (!phys.checkCollision(max->getPos(), 2)) {
+			cout << "CHECK" << endl;
+			Position j = phys.jump(max->getPos());
+			max->getPos().setPostion(0, max->getPos().getY() - j.getY());
+		}
+		else {
+			phys.setJumpCheck();
+		}
+	}
 }
 
-void Game::onKeyDown(int) {
+void Game::onKeyDown(int k) {
+	//dir: 0 - Right, 1 - Left, 2 - Up, 3 - down
+	switch (k) {
+	case 57358:
+		if (!phys.checkCollision(max->getPos(), 0)) {
+			max->getPos().setPostion(10, 0);
+		}
+		break;
+	case 57356:
+		if (!phys.checkCollision(max->getPos(), 1)) {
+			max->getPos().setPostion(-10, 0);
+		}
+		break;
+	case 32: 
+		cout << "SPACE BAR" << endl;
+		if (!phys.isJumpCheck()) {
+			Position j = phys.jump(max->getPos());
+			max->getPos().setPostion(0, max->getPos().getY() - j.getY());
+		}
+		break;
+	}
+	//max.getPos().setPostion();
+}
 
+void Game::draw() {
+	ren.drawBG();
+	ren.drawFG(*max);
 }
