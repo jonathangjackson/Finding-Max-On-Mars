@@ -1,5 +1,7 @@
 #pragma once
 #include "Physics.h"
+#include <stdlib.h>
+#include <time.h> 
 
 class Enemy
 {
@@ -10,6 +12,7 @@ private:
 	ofImage *sprites;
 	bool animate;
 	float jumpTime;
+	bool dir;
 public:
 	Enemy(Position, ofImage[], int);
 	~Enemy();
@@ -18,5 +21,6 @@ public:
 	void setHealth(int);
 	void animateSprite(int);
 	Position &getPos();
+	void aiMove();
 };
 

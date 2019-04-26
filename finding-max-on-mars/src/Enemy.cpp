@@ -8,6 +8,8 @@ Enemy::Enemy(Position p, ofImage s[], int size)
 		this->sprites[i] = s[i];
 	}
 	this->p = p;
+	dir = false;
+
 }
 
 
@@ -41,4 +43,19 @@ void Enemy::animateSprite(int i) {
 
 Position &Enemy::getPos() {
 	return p;
+}
+
+void Enemy::aiMove() {
+	
+	if (dir) {
+		if (p.inFrame())
+			p.setPostion(-2, 0);
+	}
+	else {
+		if(p.inFrame())
+			p.setPostion(2, 0);
+	}
+	int r = rand() % 50;
+	if (r == 1)
+		dir = !dir;
 }

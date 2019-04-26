@@ -15,6 +15,11 @@ void Render::drawBG() {
 	l->getBg().draw(0, 0);
 }
 
+void Render::drawFG() {
+	l->moveEnemies();
+	l->drawEnemies();
+}
+
 void Render::drawFG(Enemy e) {
 	e.animateSprite(0);
 }
@@ -22,3 +27,4 @@ void Render::drawFG(Enemy e) {
 void Render::loadLevel(Level l) {
 	this->l = new Level(l);
 }
+

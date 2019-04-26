@@ -1,6 +1,9 @@
 #pragma once
 #include "Position.h"
+#include "ofFbo.h"
 #include "ofImage.h"
+#include "ofRectangle.h"
+#include "ofGraphics.h"
 #include <iostream>
 using namespace std;
 
@@ -13,6 +16,7 @@ private:
 	ofPixels pixels;
 	bool isJump;
 	float velocity;
+	ofFbo eBuffer;
 public:
 	Physics();
 	~Physics();
@@ -21,5 +25,7 @@ public:
 	void init(float, ofImage);//gravit and heightMap
 	bool isJumpCheck();
 	void setJumpCheck();
+
+	ofImage enemyBuffer();
 };
 

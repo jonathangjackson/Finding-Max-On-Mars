@@ -9,6 +9,7 @@ public:
 	Render();
 	~Render();
 	void drawFG(Enemy);
+	void drawFG();
 	void drawBG();
 	void loadLevel(Level);
 };

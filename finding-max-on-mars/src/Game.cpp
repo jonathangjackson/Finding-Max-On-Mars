@@ -10,7 +10,7 @@ Game::Game()
 	start.setPostion(0, 500);
 
 	max = new Player(Position(start), playerImg, 1);
-	max->getPos().setPostion(10.0f, 0.0f);
+	max->getPos().setPostion(500.0f, 0.0f);
 	cout << max->getPos().getX() << endl;
 
 	levels = new Level[3];
@@ -48,7 +48,6 @@ void Game::init(int i) {
 void Game::update() {
 	if (phys.isJumpCheck()) {
 		if (!phys.checkCollision(max->getPos(), 2)) {
-			cout << "CHECK" << endl;
 			Position j = phys.jump(max->getPos());
 			max->getPos().setPostion(0, max->getPos().getY() - j.getY());
 		}
@@ -65,10 +64,20 @@ void Game::onKeyDown(int k) {
 		if (!phys.checkCollision(max->getPos(), 0)) {
 			max->getPos().setPostion(10, 0);
 		}
+		if (!phys.checkCollision(max->getPos(), 2) && !phys.isJumpCheck()) {
+			do {
+				max->getPos().setPostion(0, 10);
+			} while (!phys.checkCollision(max->getPos(), 2));
+		}
 		break;
 	case 57356:
 		if (!phys.checkCollision(max->getPos(), 1)) {
 			max->getPos().setPostion(-10, 0);
+		}
+		if (!phys.checkCollision(max->getPos(), 2) && !phys.isJumpCheck()) {
+			do {
+				max->getPos().setPostion(0, 10);
+			} while (!phys.checkCollision(max->getPos(), 2));
 		}
 		break;
 	case 32: 
@@ -84,5 +93,6 @@ void Game::onKeyDown(int k) {
 
 void Game::draw() {
 	ren.drawBG();
+	ren.drawFG();
 	ren.drawFG(*max);
 }

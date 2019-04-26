@@ -5,12 +5,25 @@
 Physics::Physics()
 {
 	isJump = false;
-	velocity = 10;
+	velocity = 15;
+
+	eBuffer.allocate(1024, 768, OF_IMAGE_GRAYSCALE);
 }
 
 
 Physics::~Physics()
 {
+}
+
+
+ofImage Physics::enemyBuffer() {
+	eBuffer.begin();
+		ofClear(255, 255, 255, 0);
+		for (int i = 0; i < 10; i++) {
+
+		}
+	eBuffer.end();
+	return eBuffer;
 }
 
 bool Physics::checkCollision(Position p, int dir) {
@@ -26,7 +39,6 @@ bool Physics::checkCollision(Position p, int dir) {
 		break;
 	case 1:
 		//Left
-
 		if (pixels.getColor(p.getX(), p.getY() + 100) == black) {
 			return true;
 		}
@@ -75,6 +87,6 @@ bool Physics::isJumpCheck() {
 
 void Physics::setJumpCheck() {
 	isJump = false;
-	velocity = 10;
+	velocity = 15;
 	time = 0;
 }
