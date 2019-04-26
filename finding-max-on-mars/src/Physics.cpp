@@ -15,15 +15,22 @@ Physics::~Physics()
 {
 }
 
+void Physics::setPhysics(Level l){
+	this->l = &l;
+}
 
-ofImage Physics::enemyBuffer() {
+void Physics::enemyBuffer() {
 	eBuffer.begin();
 		ofClear(255, 255, 255, 0);
+		ofSetColor(100);
 		for (int i = 0; i < 10; i++) {
-
+			Position pE = l->getEnemy(i);
+			if (pE.getY() != 0) {
+				ofRect(pE.getX(), pE.getY(), 50, 50);
+			}
 		}
 	eBuffer.end();
-	return eBuffer;
+	eBuffer.draw(0, 0);
 }
 
 bool Physics::checkCollision(Position p, int dir) {

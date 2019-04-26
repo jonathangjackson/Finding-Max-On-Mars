@@ -31,6 +31,8 @@ Game::Game()
 	levels[0] = Level(names[0], heightMaps[0], backgrounds[0], names, 10, 9.81);
 	levels[1] = Level(names[1], heightMaps[1], backgrounds[1], names, 10, 9.81);
 	levels[2] = Level(names[2], heightMaps[2], backgrounds[2], names, 10, 9.81);
+
+	phys.setPhysics(levels[0]);
 }
 
 Game::~Game()
@@ -55,6 +57,7 @@ void Game::update() {
 			phys.setJumpCheck();
 		}
 	}
+	phys.enemyBuffer();
 }
 
 void Game::onKeyDown(int k) {
